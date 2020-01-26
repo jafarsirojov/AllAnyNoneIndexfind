@@ -19,17 +19,12 @@ func filterBy(items []account, predicate func(item account) bool) []account {
 }
 
 func Index(items []account, predicate func(item account) bool) int {
-	tempBool :=true
-	predicateIndex := -1
 	for index, item := range items {
 		if predicate(item) {
-			if tempBool{
-				predicateIndex=index
-				tempBool=false
-			}
+			return index
 		}
 	}
-	return predicateIndex
+	return -1
 }
 func All(items []account, predicate func(item account) bool) bool {
 	return Index(items, func(item account)bool{
@@ -62,8 +57,5 @@ func Find2(items []account, predicate func(item account) bool) (account,error) {
 func Find3NoError(items []account, predicate func(item account) bool) account{
 	return items[Index(items,predicate)]
 }
-
-
-
 
 func main() {}
