@@ -120,8 +120,8 @@ func ExampleFind_HasResult() {
 	// Output: {1 Petya 100000} <nil>
 }
 
-func ExampleFind2_NoResult() {
-	result, ok := Find2(db, func(item account) bool {
+func ExampleFindError_NoResult() {
+	result, ok := FindError(db, func(item account) bool {
 		return item.balance < 10_000
 	})
 
@@ -129,8 +129,8 @@ func ExampleFind2_NoResult() {
 	// Output: {0  0} Not found
 }
 
-func ExampleFind2_HasResult() {
-	result, ok := Find2(db, func(item account) bool {
+func ExampleFindError_HasResult() {
+	result, ok := FindError(db, func(item account) bool {
 		return item.balance > 70_000
 	})
 
@@ -138,8 +138,8 @@ func ExampleFind2_HasResult() {
 	// Output: {1 Petya 100000} <nil>
 }
 
-func ExampleFind3_HasResult() {
-	result := Find3NoError(db, func(item account) bool {
+func ExampleFindHasPanic_HasResult() {
+	result := FindHasPanic(db, func(item account) bool {
 		return item.balance > 70_000
 	})
 

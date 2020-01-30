@@ -46,7 +46,7 @@ func Find(items []account, predicate func(item account) bool) (account,error) {
 	return account{},fmt.Errorf("Not found")
 }
 
-func Find2(items []account, predicate func(item account) bool) (account,error) {
+func FindError(items []account, predicate func(item account) bool) (account,error) {
 	tempIndex := Index(items, predicate)
 	if tempIndex != -1{
 		return items[tempIndex],nil
@@ -54,7 +54,7 @@ func Find2(items []account, predicate func(item account) bool) (account,error) {
 	return account{},fmt.Errorf("Not found")
 }
 
-func Find3NoError(items []account, predicate func(item account) bool) account{
+func FindHasPanic(items []account, predicate func(item account) bool) account{
 	return items[Index(items,predicate)]
 }
 
